@@ -5,10 +5,10 @@
     <Component class="javaswingdev.GoogleMaterialIcon" name="iconClose">
       <Properties>
         <Property name="color1" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="6f" green="6f" red="6f" type="rgb"/>
+          <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="color2" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="d7" green="d7" red="d7" type="rgb"/>
+          <Color blue="92" green="eb" red="fa" type="rgb"/>
         </Property>
         <Property name="icon" type="javaswingdev.GoogleMaterialDesignIcon" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="CLOSE"/>
@@ -19,10 +19,10 @@
     <Component class="javaswingdev.GoogleMaterialIcon" name="iconMax">
       <Properties>
         <Property name="color1" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="6f" green="6f" red="6f" type="rgb"/>
+          <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="color2" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="d7" green="d7" red="d7" type="rgb"/>
+          <Color blue="92" green="eb" red="fa" type="rgb"/>
         </Property>
         <Property name="icon" type="javaswingdev.GoogleMaterialDesignIcon" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="CONTENT_COPY"/>
@@ -33,10 +33,10 @@
     <Component class="javaswingdev.GoogleMaterialIcon" name="iconMinimize">
       <Properties>
         <Property name="color1" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="6f" green="6f" red="6f" type="rgb"/>
+          <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="color2" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="d7" green="d7" red="d7" type="rgb"/>
+          <Color blue="92" green="eb" red="fa" type="rgb"/>
         </Property>
         <Property name="icon" type="javaswingdev.GoogleMaterialDesignIcon" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="REMOVE"/>
@@ -47,10 +47,10 @@
     <Component class="javaswingdev.GoogleMaterialIcon" name="iconRestore">
       <Properties>
         <Property name="color1" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="6f" green="6f" red="6f" type="rgb"/>
+          <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="color2" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="d7" green="d7" red="d7" type="rgb"/>
+          <Color blue="92" green="eb" red="fa" type="rgb"/>
         </Property>
         <Property name="icon" type="javaswingdev.GoogleMaterialDesignIcon" editor="org.netbeans.modules.form.editors.EnumEditor">
           <Value id="CROP_DIN"/>
@@ -95,7 +95,7 @@
     <Component class="javaswingdev.Buttont" name="cmdClose">
       <Properties>
         <Property name="hoverColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="30" green="30" red="ff" type="rgb"/>
+          <Color blue="da" green="66" red="cc" type="rgb"/>
         </Property>
       </Properties>
     </Component>
