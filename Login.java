@@ -1,16 +1,16 @@
-package online.medicine.donation.system;import com.mysql.jdbc.Connection;import com.mysql.jdbc.PreparedStatement;import java.awt.Color;import java.awt.Container;import java.awt.Cursor;import java.awt.Font;import java.awt.Image;import java.awt.event.ActionEvent;import java.awt.event.ActionListener;import java.sql.DriverManager;import java.sql.ResultSet;import java.sql.SQLException;import javax.swing.ImageIcon;import javax.swing.JButton;import javax.swing.JCheckBox;import javax.swing.JFrame;import javax.swing.JLabel;import javax.swing.JOptionPane;import javax.swing.JPanel;import javax.swing.JPasswordField;import javax.swing.JScrollPane;import javax.swing.JTextField;public class Login extends JFrame{  private JLabel emaillabel,passwordlabel,imglabel,imglabel1,title,userlabel,label,label2,title1;    private JButton login,reset ,homepage,logout,ngo,user,executive;   private Cursor cursor;    private JPasswordField passwordtf;    private JCheckBox showpasscheckbox,remember;    private ImageIcon icon;   public static JTextField emailtf,usernametf;    private Container c;    Connection con;    PreparedStatement pst,pst1;    ResultSet rs;             Login()    {              initComponents();             }     void initComponents()    {              this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        this.setSize(1930, 1030);        this.setTitle("Admin Login");        c = this.getContentPane();        c.setLayout(null);        this.setResizable(false);         c.setBackground(new Color(0xFAEB92));                       
+package online.medicine.donation.system;import com.mysql.jdbc.Connection;import com.mysql.jdbc.PreparedStatement;import java.awt.Color;import java.awt.Container;import java.awt.Cursor;import java.awt.Font;import java.awt.Image;import java.awt.event.ActionEvent;import java.awt.event.ActionListener;import java.sql.DriverManager;import java.sql.ResultSet;import java.sql.SQLException;import javax.swing.ImageIcon;import javax.swing.JButton;import javax.swing.JCheckBox;import javax.swing.JFrame;import javax.swing.JLabel;import javax.swing.JOptionPane;import javax.swing.JPanel;import javax.swing.JPasswordField;import javax.swing.JScrollPane;import javax.swing.JTextField;public class Login extends JFrame{  private JLabel emaillabel,passwordlabel,imglabel,imglabel1,title,userlabel,label,label2,title1;    private JButton login,reset ,homepage,logout,ngo,user,executive;   private Cursor cursor;    private JPasswordField passwordtf;    private JCheckBox showpasscheckbox,remember;    private ImageIcon icon;   public static JTextField emailtf,usernametf;    private Container c;    Connection con;    PreparedStatement pst,pst1;    ResultSet rs;             Login()    {              initComponents();             }     void initComponents()    {              this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        this.setSize(1930, 1030);        this.setTitle("Admin Login");        c = this.getContentPane();        c.setLayout(null);        this.setResizable(false);         c.setBackground(Theme.PRIMARY_BG);                       
         Font font = new Font("Arial",Font.BOLD,42);         
         title = new JLabel("MedConnect");        
         title.setFont(font);        
         title.setBounds(2, 2, 1930, 80);        
-        title.setForeground(new Color(0x000000));        
+        title.setForeground(Theme.PRIMARY_TEXT);        
         title.setOpaque(true);        
-        title.setBackground(new Color(0xFAEB92));     
+        title.setBackground(Theme.SECONDARY_BG);     
         c.add(title);        
         label = new JLabel();        
         label.setBounds(1, 100, 1930, 150);        
         label.setOpaque(true);        
-        label.setBackground(new Color(0xFAEB92));       
+        label.setBackground(Theme.SECONDARY_BG);       
         c.add(label);        
         Cursor cursor = new Cursor(Cursor.HAND_CURSOR);              
         Font font1 = new Font("Arial",Font.BOLD,24);         
@@ -55,18 +55,18 @@ package online.medicine.donation.system;import com.mysql.jdbc.Connection;import 
         label2.setFont(font);       
         label2.setBounds(500, 2, 1130, 900);       
         label2.setOpaque(true);       
-        label2.setBackground(new Color(0xFAEB92));        
+        label2.setBackground(Theme.SECONDARY_BG);        
         imglabel.add(label2);                  
         title1 = new JLabel("Admin Login");        
         title1.setFont(font1);        
         title1.setBounds(2, 2,  1130, 60);        
-        title1.setForeground(new Color(0x000000));       
+        title1.setForeground(Theme.PRIMARY_TEXT);       
         title1.setOpaque(true);       
-        title1.setBackground(new Color(0xFAEB92));        
+        title1.setBackground(Theme.SECONDARY_BG);        
         label2.add(title1);                 
         JPanel panel2 = new JPanel();        
         panel2.setBounds(450, 80,230,230);        
-        panel2.setBackground(new Color(0xFAEB92));        
+        panel2.setBackground(Theme.SECONDARY_BG);        
         label2.add(panel2);          
         icon = new ImageIcon(getClass().getResource("login.png"));           
         Image img1 = icon.getImage();           
@@ -102,7 +102,7 @@ package online.medicine.donation.system;import com.mysql.jdbc.Connection;import 
         showpasscheckbox = new JCheckBox("Show Password");        
         showpasscheckbox .setBounds(200, 510, 250, 40);       
         showpasscheckbox .setFont(font1);      
-        showpasscheckbox .setBackground(new Color(0xFAEB92));        
+        showpasscheckbox .setBackground(Theme.SECONDARY_BG);        
         label2.add(showpasscheckbox );              
         login = new JButton("Login");        
         login.setBounds(360, 580, 150, 50);        
@@ -114,6 +114,11 @@ package online.medicine.donation.system;import com.mysql.jdbc.Connection;import 
         reset .setFont(font1);        
         reset .setCursor(cursor);         
         label2.add( reset );      
+        // Apply Theme to buttons
+        login.setBackground(Theme.PRIMARY_ACCENT);
+        login.setForeground(Theme.PRIMARY_BG);
+        reset.setBackground(Theme.PRIMARY_ACCENT);
+        reset.setForeground(Theme.PRIMARY_BG);
         Handler handler = new Handler();         
         login.addActionListener(handler);        
         showpasscheckbox.addActionListener(handler);       
@@ -185,20 +190,20 @@ package online.medicine.donation.system;import com.mysql.jdbc.Connection;import 
                 passwordtf.setText("");        
             }                      
             if(ae.getSource()==homepage){                   
-                homepage.setBackground(new Color(0x9929EA));            
+                homepage.setBackground(Theme.PRIMARY_ACCENT);            
                 setVisible(false);            
                 HomePage frame = new HomePage();             
                 frame.setVisible(true);                     
             }       
             if(ae.getSource()==ngo){                   
-                ngo.setBackground(new Color(0x9929EA));            
+                ngo.setBackground(Theme.PRIMARY_ACCENT);            
                 setVisible(false);            
                 NGOLogin frame = new NGOLogin();             
                 frame.setVisible(true);                     
             }       
             if(ae.getSource()==executive){         
                 setVisible(false);            
-                executive.setBackground(new Color(0x9929EA));            
+                executive.setBackground(Theme.PRIMARY_ACCENT);            
                 ExecutiveLogin frame = new ExecutiveLogin();             
                 frame.setVisible(true);       
             }                       
