@@ -1,0 +1,159 @@
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                    MEDCONNECT - QUICK LOGIN REFERENCE                           ║
+║                         (Mockup Data - October 2024)                            ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+📋 ADMIN CREDENTIALS (3 admins available)
+═════════════════════════════════════════════════════════════════════════════════
+
+1. Primary Admin
+   Email/Username: admin
+   Password: admin123
+
+2. Secondary Admin
+   Name: Rajesh Kumar
+   Email: rajesh@medicinedonation.com
+   Password: admin@2024
+
+3. Tertiary Admin
+   Name: Priya Singh
+   Email: priya@medicinedonation.com
+   Password: medadmin123
+
+───────────────────────────────────────────────────────────────────────────────
+
+👥 USER CREDENTIALS (10 users available)
+═════════════════════════════════════════════════════════════════════════════════
+
+1. John User              | Email: john@user.com          | Password: user123
+2. Jane User              | Email: jane@user.com          | Password: user456
+3. Amit Singh             | Email: amit@user.com          | Password: user789
+4. Deepa Patel            | Email: deepa@user.com         | Password: user@123
+5. Suresh Kumar           | Email: suresh@user.com        | Password: user#456
+6. Kavya Reddy            | Email: kavya@user.com         | Password: user!789
+7. Arjun Nair             | Email: arjun@user.com         | Password: user$123
+8. Sneha Iyer             | Email: sneha@user.com         | Password: user%456
+9. Ravi Shankar           | Email: ravi@user.com          | Password: user&789
+10. Neha Kapoor           | Email: neha@user.com          | Password: user*123
+
+───────────────────────────────────────────────────────────────────────────────
+
+🏥 EXECUTIVE CREDENTIALS (8 executives available)
+═════════════════════════════════════════════════════════════════════════════════
+
+1. John Executive         | Email: john@executive.com     | Password: exec123
+2. Jane Executive         | Email: jane@executive.com     | Password: exec456
+3. Arun Kumar             | Email: arun@executive.com     | Password: exec789
+4. Meena Sharma           | Email: meena@executive.com    | Password: exec@123
+5. Rajesh Patel           | Email: rajesh.p@executive.com | Password: exec#456
+6. Priya Verma            | Email: priya.v@executive.com  | Password: exec!789
+7. Vikram Singh           | Email: vikram@executive.com   | Password: exec$123
+8. Sneha Gupta            | Email: sneha@executive.com    | Password: exec%456
+
+───────────────────────────────────────────────────────────────────────────────
+
+🤝 NGO CREDENTIALS (6 NGOs available)
+═════════════════════════════════════════════════════════════════════════════════
+
+1. Health Care Foundation        | Email: ngo1@healthcare.org      | Password: ngo123
+2. Medical Aid Society           | Email: ngo2@medicalsociety.org  | Password: ngo456
+3. Helping Hands NGO             | Email: ngo3@helpinghands.org    | Password: ngo789
+4. Care India Foundation         | Email: ngo4@careindia.org       | Password: ngo@2024
+5. Life Care Organization        | Email: ngo5@lifecare.org        | Password: ngo#123
+6. Community Health Services     | Email: ngo6@commhealth.org      | Password: ngo!456
+
+───────────────────────────────────────────────────────────────────────────────
+
+💊 AVAILABLE MEDICINES IN SYSTEM (12 medicines)
+═════════════════════════════════════════════════════════════════════════════════
+
+1. Paracetamol 500mg        | Price: ₹50   | Exp: 31-12-2026
+2. Aspirin 100mg            | Price: ₹30   | Exp: 14-02-2026
+3. Ibuprofen 200mg          | Price: ₹40   | Exp: 28-02-2026
+4. Cetirizine 10mg          | Price: ₹35   | Exp: 09-01-2026
+5. Amoxicillin 250mg        | Price: ₹120  | Exp: 04-02-2026
+6. Metformin 500mg          | Price: ₹80   | Exp: 19-01-2026
+7. Atorvastatin 10mg        | Price: ₹150  | Exp: 11-03-2026
+8. Omeprazole 20mg          | Price: ₹95   | Exp: 07-02-2026
+9. Vitamin D3 1000IU        | Price: ₹60   | Exp: 24-01-2026
+10. Cough Syrup 100ml       | Price: ₹45   | Exp: 28-02-2025
+11. Antacid Gel             | Price: ₹55   | Exp: 13-02-2025
+12. Antihistamine Tablet    | Price: ₹40   | Exp: 19-01-2025
+
+───────────────────────────────────────────────────────────────────────────────
+
+🌍 OPERATIONAL LOCATIONS
+═════════════════════════════════════════════════════════════════════════════════
+• Mumbai (Maharashtra)
+• Delhi (Delhi)
+• Bangalore (Karnataka)
+• Hyderabad (Telangana)
+• Chennai (Tamil Nadu)
+• Kolkata (West Bengal)
+• Pune (Maharashtra)
+• Ahmedabad (Gujarat)
+• Jaipur (Rajasthan)
+• Lucknow (Uttar Pradesh)
+
+───────────────────────────────────────────────────────────────────────────────
+
+📊 DATABASE STATISTICS
+═════════════════════════════════════════════════════════════════════════════════
+• Total Admins:           3
+• Total Users:            10
+• Total Executives:       8
+• Total NGOs:             6
+• Total Medicines:        12
+• Total Donations:        12
+• Total Purchase Records: 10
+
+───────────────────────────────────────────────────────────────────────────────
+
+💡 QUICK TESTING TIPS
+═════════════════════════════════════════════════════════════════════════════════
+
+1. ADMIN LOGIN TEST
+   → Use: admin / admin123
+   → Can add/edit/delete medicines and NGOs
+   → Can view all users and donations
+
+2. USER LOGIN TEST
+   → Use: john@user.com / user123
+   → Can donate medicines
+   → Can view donated medicines (My Orders)
+
+3. EXECUTIVE LOGIN TEST
+   → Use: john@executive.com / exec123
+   → Can collect medicines from users
+   → Can buy medicines
+   → Can view assigned work
+
+4. NGO LOGIN TEST
+   → Use: Health Care Foundation / ngo123
+   → Can assign executives
+   → Can view collected medicines
+
+───────────────────────────────────────────────────────────────────────────────
+
+⚠️ IMPORTANT NOTES
+═════════════════════════════════════════════════════════════════════════════════
+✓ All data is automatically populated when running database_setup.sql
+✓ Dates are set to October 2024
+✓ All phone numbers are in Indian format (10 digits)
+✓ All passwords are simple for easy testing
+✓ Sample donations already exist (12 records)
+✓ Sample purchases already exist (10 records)
+
+───────────────────────────────────────────────────────────────────────────────
+
+📝 FOR SETUP ISSUES, CHECK:
+═════════════════════════════════════════════════════════════════════════════════
+1. MYSQL_SETUP.md      - MySQL installation and configuration
+2. SETUP_GUIDE.md      - Application setup instructions
+3. SOLUTION_GUIDE.md   - Common issues and solutions
+4. MOCKUP_DATA_GUIDE.md- Detailed data documentation
+
+═════════════════════════════════════════════════════════════════════════════════
+           Last Updated: October 2024 | MedConnect v1.0
+═════════════════════════════════════════════════════════════════════════════════
+
