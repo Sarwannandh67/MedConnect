@@ -1,1 +1,203 @@
-/* * To change this license header, choose License Headers in Project Properties. * To change this template file, choose Tools | Templates * and open the template in the editor. */package online.medicine.donation.system;import com.mysql.jdbc.Connection;import com.mysql.jdbc.PreparedStatement;import java.awt.Color;import java.awt.Container;import java.awt.Cursor;import java.awt.Font;import java.awt.event.ActionEvent;import java.awt.event.ActionListener;import java.sql.ResultSet;import javax.swing.JButton;import javax.swing.JFrame;import javax.swing.JLabel;import javax.swing.JOptionPane;import javax.swing.JScrollPane;import javax.swing.JTable;import javax.swing.table.DefaultTableModel;/** * * @author Hp */public class User1 extends JFrame {     private Container c;       private JLabel label,title,title1,label2,label1;     private JButton  homepage,logout,order,donate;      String uname =  UserLogin.usernametf.getText();                          User1()    {        initComponents();         }       void initComponents()    {         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        this.setSize(1930, 1030);        this.setTitle("User");        c = this.getContentPane();        c.setLayout(null);        this.setResizable(false);         c.setBackground(Color.GRAY);                           Font font = new Font("Arial",Font.BOLD,42);         title = new JLabel("MedConnect");        title.setFont(font);        title.setBounds(2, 2, 1930, 80);        title.setForeground(Color.BLUE);        title.setOpaque(true);        title.setBackground(Color.ORANGE);        c.add(title);        label = new JLabel();        label.setBounds(1, 100, 1930, 150);        label.setOpaque(true);        label.setBackground(Color.MAGENTA);        c.add(label);        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);              Font font1 = new Font("Arial",Font.BOLD,24);           homepage = new JButton("Home Page");        homepage.setFont(font1);               homepage.setBounds(20, 30, 170, 80);                homepage.setCursor(cursor);         label.add(homepage);                  order = new JButton("My Order");     order.setFont(font1);    order.setBounds(191, 30, 170, 80);      order.setCursor(cursor);        label.add(order);              donate = new JButton("Donate Medicine");      donate.setFont(font1);         donate.setBounds(362, 30, 270, 80);       donate.setCursor(cursor);        label.add( donate);       logout = new JButton("Logout");      logout.setFont(font1);        logout.setBounds(633, 30, 190, 80);       logout.setCursor(cursor);        label.add(logout);                     label1 = new JLabel("Welcome "+uname);         label1.setBounds(100, 500, 1900, 200);                 Font font2 = new Font("Arial",Font.BOLD,50);           label1.setFont(font2);         c.add(label1);                    label2 = new JLabel("Hi "+uname);                            label2.setBounds(1660, 30, 500, 80);         label2.setFont(font1);         label2.setToolTipText(uname);                             label.add(label2);           Handler handler = new Handler();        homepage.addActionListener(handler);             order.addActionListener(handler);     donate.addActionListener(handler);     logout.addActionListener(handler);        }    class Handler implements ActionListener{    public void actionPerformed(ActionEvent ae) {        if(ae.getSource() ==  homepage)                    {            setVisible(false);            HomePage frame = new  HomePage();            frame.setVisible(true);        }        if(ae.getSource() ==  order)                    {            setVisible(false);          MyOrder frame = new MyOrder();          frame.setVisible(true);                 }        if(ae.getSource() ==  donate)                    {            setVisible(false);          DonateMedicine frame = new DonateMedicine();          frame.setVisible(true);                 }       if(ae.getSource()==logout)        {                   int a = JOptionPane.showConfirmDialog(null, "Are You Sure?");          if(a==JOptionPane.YES_OPTION){           setVisible(false);           UserLogin frame = new UserLogin();          frame.setVisible(true);          }        }           }                }    public static void main(String[] args) {        User1 frame = new User1();        frame.setVisible(true);        } }
+package online.medicine.donation.system;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+/**
+ * User1 - User dashboard for medicine donation system
+ * Provides navigation to order tracking, medicine donation, and account functions
+ * 
+ * @author Team
+ */
+public class User1 extends JFrame {
+
+    // ========== UI COMPONENTS ==========
+    // Title and Navigation
+    private JLabel titleLabel;
+    private JLabel navigationBar;
+    private JLabel welcomeLabel;
+    private JLabel userInfoLabel;
+    
+    // Navigation Buttons
+    private JButton homeButton;
+    private JButton myOrderButton;
+    private JButton donateMedicineButton;
+    private JButton logoutButton;
+    
+    // Container and User Info
+    private Container contentPane;
+    private String currentUserName;
+
+    /**
+     * Constructor
+     */
+    public User1() {
+        initComponents();
+    }
+
+    /**
+     * Initialize all UI components
+     */
+    private void initComponents() {
+        setupFrame();
+        createTitleBar();
+        createNavigationBar();
+        createWelcomeSection();
+        addActionListeners();
+    }
+
+    /**
+     * Setup basic frame properties
+     */
+    private void setupFrame() {
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(1930, 1030);
+        this.setTitle("User Dashboard");
+        this.setResizable(false);
+        
+        contentPane = this.getContentPane();
+        contentPane.setLayout(null);
+        contentPane.setBackground(Color.GRAY);
+        
+        currentUserName = UserLogin.usernametf.getText();
+    }
+
+    /**
+     * Create and setup title bar
+     */
+    private void createTitleBar() {
+        Font titleFont = new Font("Arial", Font.BOLD, 42);
+        
+        titleLabel = new JLabel("MedConnect");
+        titleLabel.setFont(titleFont);
+        titleLabel.setBounds(2, 2, 1930, 80);
+        titleLabel.setForeground(Color.BLUE);
+        titleLabel.setOpaque(true);
+        titleLabel.setBackground(Color.ORANGE);
+        contentPane.add(titleLabel);
+    }
+
+    /**
+     * Create and setup navigation bar with buttons
+     */
+    private void createNavigationBar() {
+        navigationBar = new JLabel();
+        navigationBar.setBounds(1, 100, 1930, 150);
+        navigationBar.setOpaque(true);
+        navigationBar.setBackground(Color.MAGENTA);
+        contentPane.add(navigationBar);
+
+        Cursor handCursor = new Cursor(Cursor.HAND_CURSOR);
+        Font buttonFont = new Font("Arial", Font.BOLD, 24);
+
+        // Home Button
+        homeButton = createButton("Home Page", 20, 30, 170, 80, handCursor, buttonFont, navigationBar);
+
+        // My Order Button
+        myOrderButton = createButton("My Order", 191, 30, 170, 80, handCursor, buttonFont, navigationBar);
+
+        // Donate Medicine Button
+        donateMedicineButton = createButton("Donate Medicine", 362, 30, 270, 80, handCursor, buttonFont, navigationBar);
+
+        // Logout Button
+        logoutButton = createButton("Logout", 633, 30, 190, 80, handCursor, buttonFont, navigationBar);
+
+        // User Info Label
+        userInfoLabel = new JLabel("Hi " + currentUserName);
+        userInfoLabel.setBounds(1660, 30, 500, 80);
+        userInfoLabel.setFont(buttonFont);
+        userInfoLabel.setToolTipText(currentUserName);
+        navigationBar.add(userInfoLabel);
+    }
+
+    /**
+     * Create welcome section with user greeting
+     */
+    private void createWelcomeSection() {
+        Font welcomeFont = new Font("Arial", Font.BOLD, 50);
+        
+        welcomeLabel = new JLabel("Welcome " + currentUserName);
+        welcomeLabel.setFont(welcomeFont);
+        welcomeLabel.setBounds(100, 500, 1900, 200);
+        contentPane.add(welcomeLabel);
+    }
+
+    /**
+     * Create a button with standard styling
+     */
+    private JButton createButton(String text, int x, int y, int width, int height, 
+                                 Cursor cursor, Font font, JLabel container) {
+        JButton button = new JButton(text);
+        button.setFont(font);
+        button.setBounds(x, y, width, height);
+        button.setCursor(cursor);
+        container.add(button);
+        return button;
+    }
+
+    /**
+     * Add action listeners to buttons
+     */
+    private void addActionListeners() {
+        Handler handler = new Handler();
+        
+        homeButton.addActionListener(handler);
+        myOrderButton.addActionListener(handler);
+        donateMedicineButton.addActionListener(handler);
+        logoutButton.addActionListener(handler);
+    }
+
+    /**
+     * Handle button click events
+     */
+    private class Handler implements ActionListener {
+        
+        @Override
+        public void actionPerformed(ActionEvent event) {
+            if (event.getSource() == homeButton) {
+                navigateTo(new HomePage());
+            } else if (event.getSource() == myOrderButton) {
+                navigateTo(new MyOrder());
+            } else if (event.getSource() == donateMedicineButton) {
+                navigateTo(new DonateMedicine());
+            } else if (event.getSource() == logoutButton) {
+                handleLogout();
+            }
+        }
+
+        /**
+         * Handle logout action
+         */
+        private void handleLogout() {
+            int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?",
+                    "Confirm Logout", JOptionPane.YES_NO_OPTION);
+            if (result == JOptionPane.YES_OPTION) {
+                navigateTo(new UserLogin());
+            }
+        }
+
+        /**
+         * Navigate to a new frame
+         */
+        private void navigateTo(JFrame frame) {
+            setVisible(false);
+            frame.setVisible(true);
+        }
+    }
+
+    /**
+     * Main method
+     */
+    public static void main(String[] args) {
+        User1 frame = new User1();
+        frame.setVisible(true);
+    }
+}

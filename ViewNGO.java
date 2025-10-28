@@ -1,2 +1,349 @@
-/* * To change this license header, choose License Headers in Project Properties. * To change this template file, choose Tools | Templates * and open the template in the editor. */package online.medicine.donation.system;import com.mysql.jdbc.Connection;import com.mysql.jdbc.PreparedStatement;import java.awt.Color;import java.awt.Container;import java.awt.Cursor;import java.awt.Font;import java.awt.event.ActionEvent;import java.awt.event.ActionListener;import java.sql.DriverManager;import java.sql.ResultSet;import java.sql.SQLException;import java.sql.Statement;import javax.swing.JButton;import javax.swing.JFrame;import javax.swing.JLabel;import javax.swing.JOptionPane;import javax.swing.JScrollPane;import javax.swing.JTable;import javax.swing.event.ChangeEvent;import javax.swing.table.DefaultTableModel;import javax.swing.table.JTableHeader;import javax.swing.table.TableColumn;import javax.swing.table.TableColumnModel;/** * * @author Hp */public class ViewNGO extends JFrame{    private Container c;    private JTable table;    private JLabel label,label2,title,title1;    private JButton  homepage, addmed,viewuser,viewngo,viewmed,addngo, logout;    private DefaultTableModel mode;    private JScrollPane scroll,scroll1;    Connection con;    PreparedStatement pst;    ResultSet rs;    ViewNGO()    {        initComponents();         }       void initComponents()    {          this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        this.setSize(1930, 1030);        this.setTitle("Admin");        c = this.getContentPane();        c.setLayout(null);        this.setResizable(false);         c.setBackground(Theme.PRIMARY_BG);                           Font font = new Font("Arial",Font.BOLD,42);         title = new JLabel("MedConnect");        title.setFont(font);        title.setBounds(2, 2, 1930, 80);        title.setForeground(Theme.PRIMARY_ACCENT);        title.setOpaque(true);        title.setBackground(Theme.PRIMARY_ACCENT);        c.add(title);        label = new JLabel();        label.setBounds(1, 100, 1930, 150);        label.setOpaque(true);        label.setBackground(Theme.SECONDARY_BG);        c.add(label);        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);              Font font1 = new Font("Arial",Font.BOLD,24);         homepage = new JButton("Home Page");        homepage.setFont(font1);               homepage.setBounds(20, 30, 250, 80);                homepage.setCursor(cursor);         label.add(homepage);    addngo = new JButton("Add NGO");        addngo.setCursor(cursor);        addngo.setFont(font1);       addngo.setBounds(271, 30, 250, 80);       label.add(addngo);         addmed = new JButton("Add Medicine");       addmed.setCursor(cursor);        addmed.setFont(font1);        addmed.setBounds(522, 30, 250, 80);        label.add(addmed);                        viewmed = new JButton("View Medicine");       viewmed.setCursor(cursor);        viewmed.setFont(font1);        viewmed.setBounds(773, 30, 250, 80);        label.add(viewmed);        viewuser = new JButton("View User");       viewuser.setCursor(cursor);        viewuser.setFont(font1);        viewuser.setBounds(1024, 30,250, 80);        label.add(viewuser);       logout = new JButton("Logout");       logout.setCursor(cursor);        logout.setFont(font1);        logout.setBounds(1275, 30, 250, 80);        label.add(logout);         label2 = new JLabel("Hi "+Login.usernametf.getText());                            label2.setBounds(1660, 30, 500, 80);         label2.setFont(font1);         label2.setToolTipText(Login.usernametf.getText());                             label.add(label2);         title1 = new JLabel("View NGO");        title1.setFont(font1);        title1.setBounds(1, 260, 1900, 80);        title1.setForeground(Theme.PRIMARY_ACCENT);       title1.setOpaque(true);       title1.setBackground(Theme.PRIMARY_ACCENT);       c.add(title1);                           Font font2 = new Font("Arial",Font.BOLD,18);          Font font3 = new Font("Arial",Font.BOLD,20);          String[] column ={"ID","Name","Email","Gender","Contact Number","Location","Admin Name","Admin Email"};            String[] row = new String[8];                         JTable table = new JTable();                     DefaultTableModel model = new DefaultTableModel();          model.setColumnIdentifiers(column);          table.setModel(model);                  table.setFont(font2);          table.setSelectionBackground(Theme.PRIMARY_ACCENT);          table.setRowHeight(50);            table.setEnabled(false);          JScrollPane scroll = new JScrollPane(table,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);          scroll.setBounds(1, 350,1900,630);          c.add(scroll);                 TableColumnModel col = table.getColumnModel();          TableColumn c1 = col.getColumn(1);            TableColumn c2 = col.getColumn(3);             TableColumn c3 = col.getColumn(4);              TableColumn c4 = col.getColumn(5);               TableColumn c5 = col.getColumn(2);               TableColumn c6 = col.getColumn(0);                TableColumn c7 = col.getColumn(6);               TableColumn c8 = col.getColumn(7);           c1.setPreferredWidth(300);            c2.setPreferredWidth(80);             c3.setPreferredWidth(170);              c4.setPreferredWidth(400);              c5.setPreferredWidth(368);              c6.setPreferredWidth(80);             c7.setPreferredWidth(260);              c8.setPreferredWidth(300);                  JTableHeader header = table.getTableHeader();                  header.setFont(font3);                 header.setEnabled(false);
-                 header.setBackground(Theme.PRIMARY_BG);                      try {                        String sql = "SELECT ` ID`, `Name`, `Gender`, `Email`,  `Contact Number`, `Location`,`Admin Name`, `Admin Email` FROM `addngo` ";                      con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/MedConnect","root", "");            pst =   (PreparedStatement) con.prepareStatement(sql);          rs = pst.executeQuery();          while(rs.next()){                          String n [] = {rs.getString(" ID"),rs.getString("Name"),rs.getString("Email"), rs.getString("Gender"),rs.getString("Contact Number"),rs.getString("Location"),rs.getString("Admin Name"),rs.getString("Admin Email")};               model.addRow(n);                                                }                    con.close();           pst.close();                   } catch (SQLException ex) {             JOptionPane.showMessageDialog(null, "Something Error "+ex);                   }                Handler handler = new Handler();        homepage.addActionListener(handler);        addngo.addActionListener(handler);        addmed.addActionListener(handler);             viewmed.addActionListener(handler);       viewuser.addActionListener(handler);       logout.addActionListener(handler);    }    class Handler implements ActionListener{    public void actionPerformed(ActionEvent ae) {        if(ae.getSource() ==  homepage)                    {            setVisible(false);            HomePage frame = new  HomePage();            frame.setVisible(true);        }        else if(ae.getSource() ==  addngo)                    {           setVisible(false);            AddNGO frame = new  AddNGO();            frame.setVisible(true);        }        else if(ae.getSource() ==  addmed)                    {            setVisible(false);           AddMedicine frame = new  AddMedicine();            frame.setVisible(true);        }                else if(ae.getSource() ==  viewmed)                    {           setVisible(false);           ViewMedicine frame = new  ViewMedicine();            frame.setVisible(true);        }        else if(ae.getSource() ==  viewuser)                    {            setVisible(false);           ViewUser frame = new  ViewUser();            frame.setVisible(true);        }        else if(ae.getSource()==logout)        {                   int a = JOptionPane.showConfirmDialog(null, "Are You Sure?");          if(a==JOptionPane.YES_OPTION){           setVisible(false);          Login frame = new Login();          frame.setVisible(true);          }        }           };                }                                                            public static void main(String[] args) {        ViewNGO frame = new ViewNGO();                frame.setVisible(true);                                                   }}
+package online.medicine.donation.system;
+
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
+
+/**
+ * ViewNGO - Display NGO list for Admin
+ * Shows all registered NGOs with their detailed information
+ * 
+ * @author Team
+ */
+public class ViewNGO extends JFrame {
+
+    // ========== UI COMPONENTS ==========
+    // Title and Navigation
+    private JLabel titleLabel;
+    private JLabel navigationBar;
+    private JLabel sectionTitleLabel;
+    
+    // Navigation Buttons
+    private JButton homeButton;
+    private JButton addNGOButton;
+    private JButton addMedicineButton;
+    private JButton viewMedicineButton;
+    private JButton viewUserButton;
+    private JButton logoutButton;
+    
+    // Table Components
+    private JTable ngoTable;
+    private DefaultTableModel tableModel;
+    private JScrollPane scrollPane;
+    
+    // Container and User Info
+    private Container contentPane;
+    private String currentUserName;
+    
+    // ========== DATABASE COMPONENTS ==========
+    private Connection connection;
+    private PreparedStatement statement;
+    private ResultSet resultSet;
+
+    /**
+     * Constructor
+     */
+    public ViewNGO() {
+        initComponents();
+    }
+
+    /**
+     * Initialize all UI components
+     */
+    private void initComponents() {
+        setupFrame();
+        createTitleBar();
+        createNavigationBar();
+        createSectionTitle();
+        createTableSection();
+        addActionListeners();
+    }
+
+    /**
+     * Setup basic frame properties
+     */
+    private void setupFrame() {
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(1930, 1030);
+        this.setTitle("Admin - View NGO");
+        this.setResizable(false);
+        
+        contentPane = this.getContentPane();
+        contentPane.setLayout(null);
+        contentPane.setBackground(Theme.PRIMARY_BG);
+        
+        currentUserName = Login.usernametf.getText();
+    }
+
+    /**
+     * Create and setup title bar
+     */
+    private void createTitleBar() {
+        Font titleFont = new Font("Arial", Font.BOLD, 42);
+        
+        titleLabel = new JLabel("MedConnect");
+        titleLabel.setFont(titleFont);
+        titleLabel.setBounds(2, 2, 1930, 80);
+        titleLabel.setForeground(Theme.PRIMARY_ACCENT);
+        titleLabel.setOpaque(true);
+        titleLabel.setBackground(Theme.PRIMARY_ACCENT);
+        contentPane.add(titleLabel);
+    }
+
+    /**
+     * Create and setup navigation bar with buttons
+     */
+    private void createNavigationBar() {
+        navigationBar = new JLabel();
+        navigationBar.setBounds(1, 100, 1930, 150);
+        navigationBar.setOpaque(true);
+        navigationBar.setBackground(Theme.SECONDARY_BG);
+        contentPane.add(navigationBar);
+
+        Cursor handCursor = new Cursor(Cursor.HAND_CURSOR);
+        Font buttonFont = new Font("Arial", Font.BOLD, 24);
+
+        // Home Button
+        homeButton = createButton("Home Page", 20, 30, 250, 80, handCursor, buttonFont, navigationBar);
+
+        // Add NGO Button
+        addNGOButton = createButton("Add NGO", 271, 30, 250, 80, handCursor, buttonFont, navigationBar);
+
+        // Add Medicine Button
+        addMedicineButton = createButton("Add Medicine", 522, 30, 250, 80, handCursor, buttonFont, navigationBar);
+
+        // View Medicine Button
+        viewMedicineButton = createButton("View Medicine", 773, 30, 250, 80, handCursor, buttonFont, navigationBar);
+
+        // View User Button
+        viewUserButton = createButton("View User", 1024, 30, 250, 80, handCursor, buttonFont, navigationBar);
+
+        // Logout Button
+        logoutButton = createButton("Logout", 1275, 30, 250, 80, handCursor, buttonFont, navigationBar);
+
+        // User Info Label
+        JLabel userInfoLabel = new JLabel("Hi " + currentUserName);
+        userInfoLabel.setBounds(1660, 30, 500, 80);
+        userInfoLabel.setFont(buttonFont);
+        userInfoLabel.setToolTipText(currentUserName);
+        navigationBar.add(userInfoLabel);
+    }
+
+    /**
+     * Create section title
+     */
+    private void createSectionTitle() {
+        Font sectionFont = new Font("Arial", Font.BOLD, 24);
+        
+        sectionTitleLabel = new JLabel("View NGO");
+        sectionTitleLabel.setFont(sectionFont);
+        sectionTitleLabel.setBounds(1, 260, 1900, 80);
+        sectionTitleLabel.setForeground(Theme.PRIMARY_ACCENT);
+        sectionTitleLabel.setOpaque(true);
+        sectionTitleLabel.setBackground(Theme.PRIMARY_ACCENT);
+        contentPane.add(sectionTitleLabel);
+    }
+
+    /**
+     * Create table section to display NGO information
+     */
+    private void createTableSection() {
+        Font tableContentFont = new Font("Arial", Font.BOLD, 18);
+        Font tableHeaderFont = new Font("Arial", Font.BOLD, 20);
+
+        // Define table columns
+        String[] columns = {"ID", "Name", "Email", "Gender", "Contact Number", 
+                           "Location", "Admin Name", "Admin Email"};
+        
+        // Create table model
+        tableModel = new DefaultTableModel();
+        tableModel.setColumnIdentifiers(columns);
+
+        // Create table
+        ngoTable = new JTable();
+        ngoTable.setModel(tableModel);
+        ngoTable.setFont(tableContentFont);
+        ngoTable.setSelectionBackground(Theme.PRIMARY_ACCENT);
+        ngoTable.setRowHeight(50);
+        ngoTable.setEnabled(false);
+
+        // Setup table header
+        JTableHeader header = ngoTable.getTableHeader();
+        header.setFont(tableHeaderFont);
+        header.setEnabled(false);
+        header.setBackground(Theme.PRIMARY_BG);
+
+        // Setup column widths
+        setupColumnWidths();
+
+        // Create scroll pane
+        scrollPane = new JScrollPane(ngoTable, 
+            JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, 
+            JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setBounds(1, 350, 1900, 630);
+        contentPane.add(scrollPane);
+
+        // Load data into table
+        loadTableData();
+    }
+
+    /**
+     * Setup table column widths
+     */
+    private void setupColumnWidths() {
+        TableColumnModel columnModel = ngoTable.getColumnModel();
+        
+        columnModel.getColumn(0).setPreferredWidth(80);    // ID
+        columnModel.getColumn(1).setPreferredWidth(300);   // Name
+        columnModel.getColumn(2).setPreferredWidth(368);   // Email
+        columnModel.getColumn(3).setPreferredWidth(80);    // Gender
+        columnModel.getColumn(4).setPreferredWidth(170);   // Contact Number
+        columnModel.getColumn(5).setPreferredWidth(400);   // Location
+        columnModel.getColumn(6).setPreferredWidth(260);   // Admin Name
+        columnModel.getColumn(7).setPreferredWidth(300);   // Admin Email
+    }
+
+    /**
+     * Create a button with standard styling
+     */
+    private JButton createButton(String text, int x, int y, int width, int height, 
+                                 Cursor cursor, Font font, JLabel container) {
+        JButton button = new JButton(text);
+        button.setFont(font);
+        button.setBounds(x, y, width, height);
+        button.setCursor(cursor);
+        container.add(button);
+        return button;
+    }
+
+    /**
+     * Load NGO data into table from database
+     */
+    private void loadTableData() {
+        try {
+            String sql = "SELECT `ID`, `Name`, `Gender`, `Email`, `Contact Number`, " +
+                        "`Location`, `Admin Name`, `Admin Email` FROM `addngo`";
+            
+            connection = (Connection) DriverManager.getConnection(
+                "jdbc:mysql://localhost/MedConnect", "root", ""
+            );
+            statement = (PreparedStatement) connection.prepareStatement(sql);
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String[] row = {
+                    resultSet.getString("ID"),
+                    resultSet.getString("Name"),
+                    resultSet.getString("Email"),
+                    resultSet.getString("Gender"),
+                    resultSet.getString("Contact Number"),
+                    resultSet.getString("Location"),
+                    resultSet.getString("Admin Name"),
+                    resultSet.getString("Admin Email")
+                };
+                tableModel.addRow(row);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error loading table data: " + ex.getMessage(),
+                    "Database Error", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            closeDatabase();
+        }
+    }
+
+    /**
+     * Close database resources
+     */
+    private void closeDatabase() {
+        try {
+            if (resultSet != null) resultSet.close();
+            if (statement != null) statement.close();
+            if (connection != null) connection.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error closing database: " + ex.getMessage(),
+                    "Database Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    /**
+     * Add action listeners to buttons
+     */
+    private void addActionListeners() {
+        Handler handler = new Handler();
+        
+        homeButton.addActionListener(handler);
+        addNGOButton.addActionListener(handler);
+        addMedicineButton.addActionListener(handler);
+        viewMedicineButton.addActionListener(handler);
+        viewUserButton.addActionListener(handler);
+        logoutButton.addActionListener(handler);
+    }
+
+    /**
+     * Handle button click events
+     */
+    private class Handler implements ActionListener {
+        
+        @Override
+        public void actionPerformed(ActionEvent event) {
+            if (event.getSource() == homeButton) {
+                navigateTo(new HomePage());
+            } else if (event.getSource() == addNGOButton) {
+                navigateTo(new AddNGO());
+            } else if (event.getSource() == addMedicineButton) {
+                navigateTo(new AddMedicine());
+            } else if (event.getSource() == viewMedicineButton) {
+                navigateTo(new ViewMedicine());
+            } else if (event.getSource() == viewUserButton) {
+                navigateTo(new ViewUser());
+            } else if (event.getSource() == logoutButton) {
+                handleLogout();
+            }
+        }
+
+        /**
+         * Handle logout action
+         */
+        private void handleLogout() {
+            int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?",
+                    "Confirm Logout", JOptionPane.YES_NO_OPTION);
+            if (result == JOptionPane.YES_OPTION) {
+                navigateTo(new Login());
+            }
+        }
+
+        /**
+         * Navigate to a new frame
+         */
+        private void navigateTo(JFrame frame) {
+            setVisible(false);
+            frame.setVisible(true);
+        }
+    }
+
+    /**
+     * Main method
+     */
+    public static void main(String[] args) {
+        ViewNGO frame = new ViewNGO();
+        frame.setVisible(true);
+    }
+}
